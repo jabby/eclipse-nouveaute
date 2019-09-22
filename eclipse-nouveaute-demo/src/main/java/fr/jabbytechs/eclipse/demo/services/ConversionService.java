@@ -34,6 +34,7 @@ import java.math.BigDecimal;
 import java.math.MathContext;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import javax.annotation.PostConstruct;
 import javax.enterprise.context.ApplicationScoped;
@@ -49,9 +50,23 @@ public class ConversionService implements Service {
 	private static final List<Conversion> conversions = new ArrayList<>(); 
 	
 	public List<Conversion> getAvailableConversion(ConversionUnit conversionUnit) {
-		return conversions;
+		
+		if (conversionUnit != null) {
+			
+			System.out.println("Filter is : " + conversionUnit.name());
+			
+			return conversions.stream().filter(conversion -> {
+				return conversion.getOrigin() == conversionUnit || conversion.getTarget() == conversionUnit;
+			})
+			.collect(Collectors.toList());
+		}
+		return getAllAvailableConversion();
 	}
 	
+	public List<Conversion> getAllAvailableConversion() {
+		return conversions;
+	}
+
 	public ConversionResult convert(BigDecimal value, ConversionUnit origin, ConversionUnit target) {
 		
 		Conversion currentConversion = null;
