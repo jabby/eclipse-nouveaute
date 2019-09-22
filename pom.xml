@@ -21,6 +21,13 @@
 		<module>eclipse-nouveaute-demo</module>
 	</modules>
 
+	<scm>
+		<url>https://github.com/jabby/eclipse-nouveaute-demo-2019.git</url>
+        <connection>scm:git:https://github.com/jabby/eclipse-nouveaute-demo-2019.git</connection>
+        <developerConnection>scm:git:https://github.com/jabby/eclipse-nouveaute-demo-2019.git</developerConnection>
+        <tag>HEAD</tag>
+    </scm>
+    
 	<dependencyManagement>
 		<dependencies>
 			<dependency>
