@@ -1,6 +1,6 @@
 package fr.jabbytechs.eclipse.demo.services;
 
-public interface Service {
+public abstract interface Service {
 
-	
+	public static final Character STAR = Character.valueOf('*');
 }

@@ -54,8 +54,9 @@ public class ConversionService implements Service {
 		if (conversionUnit != null) {
 			
 			System.out.println("Filter is : " + conversionUnit.name());
+	
 			
-			return conversions.stream().filter(conversion -> {
+			return conversions.stream().filter((Conversion conversion) -> {
 				return conversion.getOrigin() == conversionUnit || conversion.getTarget() == conversionUnit;
 			})
 			.collect(Collectors.toList());
@@ -72,6 +73,7 @@ public class ConversionService implements Service {
 		Conversion currentConversion = null;
 		for (int i = 0; i < conversions.size(); i++) {
 			currentConversion = conversions.get(i);
+			
 			if (currentConversion.getOrigin() == origin && currentConversion.getTarget() == target) {
 				break;
 			}
@@ -88,32 +90,34 @@ public class ConversionService implements Service {
 	@PostConstruct
 	void initData() {
 		
+		
+		
 		//TODO : add all conversions
 		
 		MathContext mathContext = new MathContext(12);
 		
 		conversions.clear();
-		conversions.add(new Conversion(METRE, YOCTOMETRE, BigDecimal.ONE.divide(BigDecimal.TEN, mathContext)));
-		conversions.add(new Conversion(METRE, ZEPTOMETRE, BigDecimal.ONE.divide(BigDecimal.TEN, mathContext)));
-		conversions.add(new Conversion(METRE, ATTOMETRE, BigDecimal.ONE.divide(BigDecimal.TEN, mathContext)));
-		conversions.add(new Conversion(METRE, FEMTOMETRE, BigDecimal.ONE.divide(BigDecimal.TEN, mathContext)));
-		conversions.add(new Conversion(METRE, PICOMETRE, BigDecimal.ONE.divide(BigDecimal.TEN, mathContext)));
-		conversions.add(new Conversion(METRE, NANOMETRE, BigDecimal.ONE.divide(BigDecimal.TEN, mathContext)));
-		conversions.add(new Conversion(METRE, MICROMETRE, BigDecimal.ONE.divide(BigDecimal.TEN, mathContext)));
-		conversions.add(new Conversion(METRE, MILLIMETRE, BigDecimal.ONE.divide(BigDecimal.TEN, mathContext)));
-		conversions.add(new Conversion(METRE, CENTIMETRE, BigDecimal.ONE.divide(BigDecimal.TEN, mathContext)));
-		conversions.add(new Conversion(METRE, DECIMETRE, BigDecimal.ONE.divide(BigDecimal.TEN, mathContext)));
-		conversions.add(new Conversion(METRE, METRE, BigDecimal.ONE));
-		conversions.add(new Conversion(METRE, DECAMETRE, BigDecimal.ONE.multiply(BigDecimal.TEN, mathContext)));
-	    conversions.add(new Conversion(METRE, HECTOMETRE, BigDecimal.ONE.multiply(BigDecimal.TEN, mathContext).multiply(BigDecimal.TEN, mathContext)));
-        conversions.add(new Conversion(METRE, KILOMETRE, BigDecimal.ONE.multiply(BigDecimal.TEN, mathContext).multiply(BigDecimal.TEN, mathContext).multiply(BigDecimal.TEN, mathContext)));
-        conversions.add(new Conversion(METRE, MEGAMETRE, BigDecimal.ONE.multiply(BigDecimal.TEN, mathContext).multiply(BigDecimal.TEN, mathContext).multiply(BigDecimal.TEN, mathContext).multiply(BigDecimal.TEN, mathContext).multiply(BigDecimal.TEN, mathContext).multiply(BigDecimal.TEN, mathContext)));
-        conversions.add(new Conversion(METRE, GIGAMETRE, BigDecimal.ONE.multiply(BigDecimal.TEN, mathContext).multiply(BigDecimal.TEN, mathContext).multiply(BigDecimal.TEN, mathContext).multiply(BigDecimal.TEN, mathContext).multiply(BigDecimal.TEN, mathContext).multiply(BigDecimal.TEN, mathContext).multiply(BigDecimal.TEN, mathContext).multiply(BigDecimal.TEN, mathContext).multiply(BigDecimal.TEN, mathContext)));
-        conversions.add(new Conversion(METRE, TERAMETRE, BigDecimal.ONE.multiply(BigDecimal.TEN, mathContext).multiply(BigDecimal.TEN, mathContext).multiply(BigDecimal.TEN, mathContext).multiply(BigDecimal.TEN, mathContext).multiply(BigDecimal.TEN, mathContext).multiply(BigDecimal.TEN, mathContext).multiply(BigDecimal.TEN, mathContext).multiply(BigDecimal.TEN, mathContext).multiply(BigDecimal.TEN, mathContext).multiply(BigDecimal.TEN, mathContext).multiply(BigDecimal.TEN, mathContext).multiply(BigDecimal.TEN, mathContext)));
-        conversions.add(new Conversion(METRE, PETAMETRE, BigDecimal.ONE.multiply(BigDecimal.TEN, mathContext).multiply(BigDecimal.TEN, mathContext).multiply(BigDecimal.TEN, mathContext).multiply(BigDecimal.TEN, mathContext).multiply(BigDecimal.TEN, mathContext).multiply(BigDecimal.TEN, mathContext).multiply(BigDecimal.TEN, mathContext).multiply(BigDecimal.TEN, mathContext).multiply(BigDecimal.TEN, mathContext).multiply(BigDecimal.TEN, mathContext).multiply(BigDecimal.TEN, mathContext).multiply(BigDecimal.TEN, mathContext).multiply(BigDecimal.TEN, mathContext).multiply(BigDecimal.TEN, mathContext).multiply(BigDecimal.TEN, mathContext)));
-        conversions.add(new Conversion(METRE, EXAMETRE, BigDecimal.ONE.multiply(BigDecimal.TEN, mathContext).multiply(BigDecimal.TEN, mathContext).multiply(BigDecimal.TEN, mathContext).multiply(BigDecimal.TEN, mathContext).multiply(BigDecimal.TEN, mathContext).multiply(BigDecimal.TEN, mathContext).multiply(BigDecimal.TEN, mathContext).multiply(BigDecimal.TEN, mathContext).multiply(BigDecimal.TEN, mathContext).multiply(BigDecimal.TEN, mathContext).multiply(BigDecimal.TEN, mathContext).multiply(BigDecimal.TEN, mathContext).multiply(BigDecimal.TEN, mathContext).multiply(BigDecimal.TEN, mathContext).multiply(BigDecimal.TEN, mathContext).multiply(BigDecimal.TEN, mathContext).multiply(BigDecimal.TEN, mathContext).multiply(BigDecimal.TEN, mathContext)));
-        conversions.add(new Conversion(METRE, ZETTAMETRE, BigDecimal.ONE.multiply(BigDecimal.TEN, mathContext).multiply(BigDecimal.TEN, mathContext).multiply(BigDecimal.TEN, mathContext).multiply(BigDecimal.TEN, mathContext).multiply(BigDecimal.TEN, mathContext).multiply(BigDecimal.TEN, mathContext).multiply(BigDecimal.TEN, mathContext).multiply(BigDecimal.TEN, mathContext).multiply(BigDecimal.TEN, mathContext).multiply(BigDecimal.TEN, mathContext).multiply(BigDecimal.TEN, mathContext).multiply(BigDecimal.TEN, mathContext).multiply(BigDecimal.TEN, mathContext).multiply(BigDecimal.TEN, mathContext).multiply(BigDecimal.TEN, mathContext).multiply(BigDecimal.TEN, mathContext).multiply(BigDecimal.TEN, mathContext).multiply(BigDecimal.TEN, mathContext).multiply(BigDecimal.TEN, mathContext).multiply(BigDecimal.TEN, mathContext).multiply(BigDecimal.TEN, mathContext)));
-        conversions.add(new Conversion(METRE, YOTTAMETRE, BigDecimal.ONE.multiply(BigDecimal.TEN, mathContext).multiply(BigDecimal.TEN, mathContext).multiply(BigDecimal.TEN, mathContext).multiply(BigDecimal.TEN, mathContext).multiply(BigDecimal.TEN, mathContext).multiply(BigDecimal.TEN, mathContext).multiply(BigDecimal.TEN, mathContext).multiply(BigDecimal.TEN, mathContext).multiply(BigDecimal.TEN, mathContext).multiply(BigDecimal.TEN, mathContext).multiply(BigDecimal.TEN, mathContext).multiply(BigDecimal.TEN, mathContext).multiply(BigDecimal.TEN, mathContext).multiply(BigDecimal.TEN, mathContext).multiply(BigDecimal.TEN, mathContext).multiply(BigDecimal.TEN, mathContext).multiply(BigDecimal.TEN, mathContext).multiply(BigDecimal.TEN, mathContext).multiply(BigDecimal.TEN, mathContext).multiply(BigDecimal.TEN, mathContext).multiply(BigDecimal.TEN, mathContext).multiply(BigDecimal.TEN, mathContext).multiply(BigDecimal.TEN, mathContext).multiply(BigDecimal.TEN, mathContext)));
+		conversions.add(new Conversion(ConversionUnit.METRE, YOCTOMETRE, BigDecimal.ONE.divide(BigDecimal.TEN, mathContext)));
+		conversions.add(new Conversion(ConversionUnit.METRE, ZEPTOMETRE, BigDecimal.ONE.divide(BigDecimal.TEN, mathContext)));
+		conversions.add(new Conversion(ConversionUnit.METRE, ATTOMETRE, BigDecimal.ONE.divide(BigDecimal.TEN, mathContext)));
+		conversions.add(new Conversion(ConversionUnit.METRE, FEMTOMETRE, BigDecimal.ONE.divide(BigDecimal.TEN, mathContext)));
+		conversions.add(new Conversion(ConversionUnit.METRE, PICOMETRE, BigDecimal.ONE.divide(BigDecimal.TEN, mathContext)));
+		conversions.add(new Conversion(ConversionUnit.METRE, NANOMETRE, BigDecimal.ONE.divide(BigDecimal.TEN, mathContext)));
+		conversions.add(new Conversion(ConversionUnit.METRE, MICROMETRE, BigDecimal.ONE.divide(BigDecimal.TEN, mathContext)));
+		conversions.add(new Conversion(ConversionUnit.METRE, MILLIMETRE, BigDecimal.ONE.divide(BigDecimal.TEN, mathContext)));
+		conversions.add(new Conversion(ConversionUnit.METRE, CENTIMETRE, BigDecimal.ONE.divide(BigDecimal.TEN, mathContext)));
+		conversions.add(new Conversion(ConversionUnit.METRE, DECIMETRE, BigDecimal.ONE.divide(BigDecimal.TEN, mathContext)));
+		conversions.add(new Conversion(ConversionUnit.METRE, METRE, BigDecimal.ONE));
+		conversions.add(new Conversion(ConversionUnit.METRE, DECAMETRE, BigDecimal.ONE.multiply(BigDecimal.TEN, mathContext)));
+	    conversions.add(new Conversion(ConversionUnit.METRE, HECTOMETRE, BigDecimal.ONE.multiply(BigDecimal.TEN, mathContext).multiply(BigDecimal.TEN, mathContext)));
+        conversions.add(new Conversion(ConversionUnit.METRE, KILOMETRE, BigDecimal.ONE.multiply(BigDecimal.TEN, mathContext).multiply(BigDecimal.TEN, mathContext).multiply(BigDecimal.TEN, mathContext)));
+        conversions.add(new Conversion(ConversionUnit.METRE, MEGAMETRE, BigDecimal.ONE.multiply(BigDecimal.TEN, mathContext).multiply(BigDecimal.TEN, mathContext).multiply(BigDecimal.TEN, mathContext).multiply(BigDecimal.TEN, mathContext).multiply(BigDecimal.TEN, mathContext).multiply(BigDecimal.TEN, mathContext)));
+        conversions.add(new Conversion(ConversionUnit.METRE, GIGAMETRE, BigDecimal.ONE.multiply(BigDecimal.TEN, mathContext).multiply(BigDecimal.TEN, mathContext).multiply(BigDecimal.TEN, mathContext).multiply(BigDecimal.TEN, mathContext).multiply(BigDecimal.TEN, mathContext).multiply(BigDecimal.TEN, mathContext).multiply(BigDecimal.TEN, mathContext).multiply(BigDecimal.TEN, mathContext).multiply(BigDecimal.TEN, mathContext)));
+        conversions.add(new Conversion(ConversionUnit.METRE, TERAMETRE, BigDecimal.ONE.multiply(BigDecimal.TEN, mathContext).multiply(BigDecimal.TEN, mathContext).multiply(BigDecimal.TEN, mathContext).multiply(BigDecimal.TEN, mathContext).multiply(BigDecimal.TEN, mathContext).multiply(BigDecimal.TEN, mathContext).multiply(BigDecimal.TEN, mathContext).multiply(BigDecimal.TEN, mathContext).multiply(BigDecimal.TEN, mathContext).multiply(BigDecimal.TEN, mathContext).multiply(BigDecimal.TEN, mathContext).multiply(BigDecimal.TEN, mathContext)));
+        conversions.add(new Conversion(ConversionUnit.METRE, PETAMETRE, BigDecimal.ONE.multiply(BigDecimal.TEN, mathContext).multiply(BigDecimal.TEN, mathContext).multiply(BigDecimal.TEN, mathContext).multiply(BigDecimal.TEN, mathContext).multiply(BigDecimal.TEN, mathContext).multiply(BigDecimal.TEN, mathContext).multiply(BigDecimal.TEN, mathContext).multiply(BigDecimal.TEN, mathContext).multiply(BigDecimal.TEN, mathContext).multiply(BigDecimal.TEN, mathContext).multiply(BigDecimal.TEN, mathContext).multiply(BigDecimal.TEN, mathContext).multiply(BigDecimal.TEN, mathContext).multiply(BigDecimal.TEN, mathContext).multiply(BigDecimal.TEN, mathContext)));
+        conversions.add(new Conversion(ConversionUnit.METRE, EXAMETRE, BigDecimal.ONE.multiply(BigDecimal.TEN, mathContext).multiply(BigDecimal.TEN, mathContext).multiply(BigDecimal.TEN, mathContext).multiply(BigDecimal.TEN, mathContext).multiply(BigDecimal.TEN, mathContext).multiply(BigDecimal.TEN, mathContext).multiply(BigDecimal.TEN, mathContext).multiply(BigDecimal.TEN, mathContext).multiply(BigDecimal.TEN, mathContext).multiply(BigDecimal.TEN, mathContext).multiply(BigDecimal.TEN, mathContext).multiply(BigDecimal.TEN, mathContext).multiply(BigDecimal.TEN, mathContext).multiply(BigDecimal.TEN, mathContext).multiply(BigDecimal.TEN, mathContext).multiply(BigDecimal.TEN, mathContext).multiply(BigDecimal.TEN, mathContext).multiply(BigDecimal.TEN, mathContext)));
+        conversions.add(new Conversion(ConversionUnit.METRE, ZETTAMETRE, BigDecimal.ONE.multiply(BigDecimal.TEN, mathContext).multiply(BigDecimal.TEN, mathContext).multiply(BigDecimal.TEN, mathContext).multiply(BigDecimal.TEN, mathContext).multiply(BigDecimal.TEN, mathContext).multiply(BigDecimal.TEN, mathContext).multiply(BigDecimal.TEN, mathContext).multiply(BigDecimal.TEN, mathContext).multiply(BigDecimal.TEN, mathContext).multiply(BigDecimal.TEN, mathContext).multiply(BigDecimal.TEN, mathContext).multiply(BigDecimal.TEN, mathContext).multiply(BigDecimal.TEN, mathContext).multiply(BigDecimal.TEN, mathContext).multiply(BigDecimal.TEN, mathContext).multiply(BigDecimal.TEN, mathContext).multiply(BigDecimal.TEN, mathContext).multiply(BigDecimal.TEN, mathContext).multiply(BigDecimal.TEN, mathContext).multiply(BigDecimal.TEN, mathContext).multiply(BigDecimal.TEN, mathContext)));
+        conversions.add(new Conversion(ConversionUnit.METRE, YOTTAMETRE, BigDecimal.ONE.multiply(BigDecimal.TEN, mathContext).multiply(BigDecimal.TEN, mathContext).multiply(BigDecimal.TEN, mathContext).multiply(BigDecimal.TEN, mathContext).multiply(BigDecimal.TEN, mathContext).multiply(BigDecimal.TEN, mathContext).multiply(BigDecimal.TEN, mathContext).multiply(BigDecimal.TEN, mathContext).multiply(BigDecimal.TEN, mathContext).multiply(BigDecimal.TEN, mathContext).multiply(BigDecimal.TEN, mathContext).multiply(BigDecimal.TEN, mathContext).multiply(BigDecimal.TEN, mathContext).multiply(BigDecimal.TEN, mathContext).multiply(BigDecimal.TEN, mathContext).multiply(BigDecimal.TEN, mathContext).multiply(BigDecimal.TEN, mathContext).multiply(BigDecimal.TEN, mathContext).multiply(BigDecimal.TEN, mathContext).multiply(BigDecimal.TEN, mathContext).multiply(BigDecimal.TEN, mathContext).multiply(BigDecimal.TEN, mathContext).multiply(BigDecimal.TEN, mathContext).multiply(BigDecimal.TEN, mathContext)));
         
         
         

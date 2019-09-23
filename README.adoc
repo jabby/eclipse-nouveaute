@@ -237,12 +237,8 @@ Ce n'est pas une nouveauté en tant que telle, mais ça mérite d'être vu.
 [NOTE.speaker]
 ====
 Nouvelle option activée par défaut : identifier visuellement les sources de test 
+
 * `Preferences > Java > Appearance > Use modified icons for test source folders and test dependencies` 
-
-* https://www.eclipse.org/eclipse/news/4.8/jdt.php#jdt-test-sources
-* https://www.eclipse.org/eclipse/news/4.8/jdt.php#testsources-apt
-* https://www.eclipse.org/eclipse/news/4.8/pde.php#testsource-pde
-
 ====
 
 === Montrer la préférence de tri des bibliothèques
@@ -297,11 +293,21 @@ Pour les fan de sublime / vscode...
 * Ouvrir la classe `Object` pour montrer un peu le rendu lorsqu'il y a pas mal de ligne de code 
 ====
 
+=== Quick search
+
+[NOTE.speaker]
+====
+Repassons à notre ConversionService. 
+
+* Utilisation de Quick Search : `Ctrl` + `Alt` + `Shift` + `L`
+====
+
 === Compare View
 
 [NOTE.speaker]
 ====
 Faire des modifications sur `ConversionService`
+
 * ajouter des lignes
 * supprimer des lignes
 * modifier des lignes
@@ -338,7 +344,8 @@ La vue est maintenant liée à la sélection. Si on change de fichier, la vue se
 * Faire un clic droit puis `Run to line` ou alors `Ctrl` +`Alt` + `Click`
 
 
-Expression History
+Expression History :
+
 * Relancer un appel en mode debug sur la ressource
 * Changer la valeur de la variable ConversionUnit à FOOT
 * * Faire `F8`
@@ -360,28 +367,58 @@ Préférence :
 * Pour les projets qui chargent des classes dynamiquement : `Java > Debug > Use advanced source lookup (JRE 1.5 and higher)`
 ====
 
-== Retour aux slides 
 
-=== Dark Theme
+
+=== Nettoyage de code
 
 [NOTE.speaker]
 ====
-Sujet cher à beaucoup de développeur. 
+Que peut faire votre IDE pour vous ? 
 
-Ce n'est pas parfait mais en un an, il y a de grosses amélioration sur toutes les plateformes. 
-
-* Thème dark sur l'aide
-* Amélioration du rendu de nombreuses icones sur toutes les plateformes (y compris theme light)
-* Amélioration du rendu des tableaux
-
-A noter également sous Linux / OSX
-* si le thème de l'OS est `dark`, l'IDE se lance en Dark mode.
+* Clean up sur les sources (aussi disponible dans les Save Actions)
+** Unnecessary code 
+*** Autoboxing / Unboxing
+*** Suppression modifier redondant
 
 ====
 
+=== Nouveaux quickfix
+
+[NOTE.speaker]
+====
+On ne les verra pas tous, on n'a pas le temps. 
+
+Pour rappel, un quickfix s'invoque en utilisant `Ctrl` + `1`
+
+* utilisation des boucle for amélioré pour les collections. Déjà présent pour les Array, ça manquait sur les collections.
+* Pour un attribut de classe : génération de getter / setter configurable (avant c'était soit rien soit getter et setter)
+* Suppression des types dans les lambdas
+** montrer la variante avec l'ajout d'un `var` au lieu du type
+* Conversion en static import
+** Ne le fait que sur le même import pas sur les imports de la même classe / enum
+* Créer les méthodes abstraite manquante
+
+* Pour ceux qui font des modules java
+** Quickfix pour créer automatiquement la méthode de service provider
+** Quickfix pour créer le constructeur par défaut d'un service provider
+
+* Quickfix pour créer votre classe de test JUnit
+** Support de JUnit 5 (version 5.5.1 out-of-the-box)
+** Ajout de template JUnit 5 dont le Test factory
+
+====
+
+=== Complétion et génération de code
+
+[NOTE.speaker]
+====
+L'autocomplétion s'est également améliorée: 
+
+* Support des nouveaux tags de la Javadoc en JDK 8, 9 et 10
 
 
-== A traiter
+Génération de Equals et hascode en version JDK 7 + (enfin)
+====
 
 === Utiliser la syntaxe du switch en beta
 
@@ -429,148 +466,88 @@ Pensez à régler votre pom.xml / build.gradle
     ----
 ====
 
-== Usability
+== Retour aux slides 
 
-* https://www.eclipse.org/eclipse/news/4.8/platform.php#detach-editor-view
-* https://www.eclipse.org/eclipse/news/4.8/platform.php#refresh-on-access
-* https://www.eclipse.org/eclipse/news/4.9/platform.php#minimap
-* https://www.eclipse.org/eclipse/news/4.9/platform.php#zoom-changed (Only Windows User)
-* https://www.eclipse.org/eclipse/news/4.11/platform.php#performance-improvements
+=== Build complet au changement du fichier de paramètrage JDT
 
-== Usability for Java Developer 
+[NOTE.speaker]
+====
+* `.settings/org.eclipse.jdt.core.prefs`: si ce fichier est mis à jour en dehors de l'IDE, on a un build complet du projet
+** pratique quand on pull une nouvelle version depuis git
+** pratique également si un autre outil génère ce fichier
+====
 
-* https://www.eclipse.org/eclipse/news/4.9/jdt.php#support-long-classpath
-* https://www.eclipse.org/eclipse/news/4.8/jdt.php#navigate-to-switch
-* https://www.eclipse.org/eclipse/news/4.8/jdt.php#escape-non-ascii-when-pasting
-* https://www.eclipse.org/eclipse/news/4.8/jdt.php#nonnullbydefault-per-module
-* https://www.eclipse.org/eclipse/news/4.8/jdt.php#nonnullbydefault-improvements
-* https://www.eclipse.org/eclipse/news/4.8/jdt.php#jdt-remove-redundant-modifiers-cleanup
-* https://www.eclipse.org/eclipse/news/4.9/jdt.php#create-abstract-method
-* https://www.eclipse.org/eclipse/news/4.9/jdt.php#convert-to-static-import
-* https://www.eclipse.org/eclipse/news/4.9/jdt.php#java7-hashcode-equals
-* https://www.eclipse.org/eclipse/news/4.9/jdt.php#step-compiler-compliance
-* https://www.eclipse.org/eclipse/news/4.10/jdt.php#remove-lambda-parameter-types
-* https://www.eclipse.org/eclipse/news/4.10/jdt.php#localVariable-var-support
-* https://www.eclipse.org/eclipse/news/4.10/jdt.php#new-module-declaration
-* https://www.eclipse.org/eclipse/news/4.10/jdt.php#ignore-completion-proposal-insertion-triggers
-* https://www.eclipse.org/eclipse/news/4.10/jdt.php#Create-module-info-on-projects-below-9
-* https://www.eclipse.org/eclipse/news/4.11/jdt.php#default-constant-values
-* https://www.eclipse.org/eclipse/news/4.11/jdt.php#service-provider-quick-fix
-* https://www.eclipse.org/eclipse/news/4.12/jdt.php#service-provider-constructor-quick-fix
-* https://www.eclipse.org/eclipse/news/4.12/jdt.php#new-switch_labeled_statment_expression_template
-* https://www.eclipse.org/eclipse/news/4.12/jdt.php#comment-generation-checkbox
-* https://www.eclipse.org/eclipse/news/4.12/jdt.php#getter-setter-quick-assist
-* https://www.eclipse.org/eclipse/news/4.12/jdt.php#quickfix-open-missing-projects
-* https://www.eclipse.org/eclipse/news/4.12/jdt.php#buildpath-module-dependencies
-* https://www.eclipse.org/eclipse/news/4.12/jdt.php#jstc-clear-initial-message
-* https://www.eclipse.org/eclipse/news/4.12/jdt.php#javadoc-support-tags
-* https://www.eclipse.org/eclipse/news/4.13/jdt.php#console-output-synchronization
-* https://www.eclipse.org/eclipse/news/4.13/jdt.php#foreach-loop-collections
-* https://www.eclipse.org/eclipse/news/4.13/jdt.php#final-fields-quickfix
-* https://www.eclipse.org/eclipse/news/4.13/jdt.php#autoboxing-unboxing
-* https://www.eclipse.org/eclipse/news/4.13/jdt.php#enhanced-redundant-modifier-removal
-* https://www.eclipse.org/eclipse/news/4.13/jdt.php#javadoc-for-module-info
-* https://www.eclipse.org/eclipse/news/4.13/jdt.php#chain-completion
-* https://www.eclipse.org/eclipse/news/4.13/jdt.php#full-build-on-jdt-core-settings-change
+=== Dark Theme
 
+[NOTE.speaker]
+====
+Sujet cher à beaucoup de développeur. 
 
-== Preferences
+Ce n'est pas parfait mais en un an, il y a de grosses amélioration sur toutes les plateformes. 
 
-* https://www.eclipse.org/eclipse/news/4.8/pl atform.php#content-type-editor-association
-* https://www.eclipse.org/eclipse/news/4.8/platform.php#contenttype-filename-pattern
-* https://www.eclipse.org/eclipse/news/4.8/platform.php#parallel-builds-preference
-* https://www.eclipse.org/eclipse/news/4.8/platform.php#report-missing-nature-as-marker
-* https://www.eclipse.org/eclipse/news/4.8/platform.php#keys-export-commandid-csv
-* https://www.eclipse.org/eclipse/news/4.8/platform.php#preference-import-export-buttons
-* https://www.eclipse.org/eclipse/news/4.8/jdt.php#jdt-complier-building-preference
-* https://www.eclipse.org/eclipse/news/4.9/platform.php#platform-team-gsettings-migration
-* https://www.eclipse.org/eclipse/news/4.9/platform.php#hide-quick-access-per-default
-* https://www.eclipse.org/eclipse/news/4.10/jdt.php#build-path-problems
-* https://www.eclipse.org/eclipse/news/4.13/platform.php#close-editors-automatically
-* https://www.eclipse.org/eclipse/news/4.13/platform.php#text-editors-color-preview
+* Thème dark sur l'aide
+* Amélioration du rendu de nombreuses icones sur toutes les plateformes (y compris theme light)
+* Amélioration du rendu des tableaux
 
-== Java Developer
+A noter également sous Linux / OSX
 
-=== Java 9
+* si le thème de l'OS est `dark`, l'IDE se lance en Dark mode.
 
-* https://www.eclipse.org/eclipse/news/4.8/jdt.php#java-9
-* https://www.eclipse.org/eclipse/news/4.8/jdt.php#module-info-paste
-* https://www.eclipse.org/eclipse/news/4.8/jdt.php#content-assist-module-declaration-name
-* https://www.eclipse.org/eclipse/news/4.8/jdt.php#quickfix-javadoc
-* https://www.eclipse*.org/eclipse/news/4.8/jdt.php#newproject-modulefile
-* https://www.eclipse.org/eclipse/news/4.8/jdt.php#override-dependencies
+====
 
+=== Pour aller plus loin 
 
-=== Java 10
+[NOTE.speaker]
+====
+La version 4.14 ou 2019.12 est en cours de réalisation. 
 
-* https://www.eclipse.org/eclipse/news/4.8/jdt.php#java-10
-* https://www.eclipse.org/eclipse/news/4.8/jdt.php#quickfix-change-compliance-10
+* Quick Access devient Find Action pour refléter plsu exactement ce que ça fait. Le raccourci reste inchangé
+* Si l'on utilise des espace en remplacement des tabulations, une nouvelle préférence sera présente permettant de supprimer les espaces par paquet plutôt que un par un.
+====
 
-=== Java 11
+== Questions ?
 
-* https://www.eclipse.org/eclipse/news/4.10/jdt.php#java-11
-* https://www.eclipse.org/eclipse/news/4.10/jdt.php#java-11-jre
-* https://www.eclipse.org/eclipse/news/4.10/jdt.php#quickfix-change-compliance-11
-* https://www.eclipse.org/eclipse/news/4.10/jdt.php#add-var-lambda-parameter-types
-* https://www.eclipse.org/eclipse/news/4.10/jdt.php#replace-lambda-parameter-types-with-var
-* https://www.eclipse.org/eclipse/news/4.10/jdt.php#replace-var-lambda-parameter-types
+* https://github.com/jabby/eclipse-nouveaute
+* https://www.eclipse.org/eclipse/news/4.8/
+* https://www.eclipse.org/eclipse/news/4.9/
+* https://www.eclipse.org/eclipse/news/4.10/
+* https://www.eclipse.org/eclipse/news/4.11/
+* https://www.eclipse.org/eclipse/news/4.12/
+* https://www.eclipse.org/eclipse/news/4.13/
+* https://www.eclipse.org/eclipse/news/4.14/
 
-=== Java 12
-
-* https://www.eclipse.org/eclipse/news/4.11/jdt.php#Java%2012
-* https://www.eclipse.org/eclipse/news/4.12/jdt.php#quickfix-change-compliance-12
-* https://www.eclipse.org/eclipse/news/4.12/jdt.php#enable-preview
-* https://www.eclipse.org/eclipse/news/4.12/jdt.php#quickfix-enable-preview-12
-* https://www.eclipse.org/eclipse/news/4.12/jdt.php#quickfix-configure-severity-12
-
-=== JUnit 
-
-* https://www.eclipse.org/eclipse/news/4.8/jdt.php#junit-5-support
-* https://www.eclipse.org/eclipse/news/4.10/jdt.php#junit-5.3.1
-* https://www.eclipse.org/eclipse/news/4.10/jdt.php#quick-assist-junit-test-case
-* https://www.eclipse.org/eclipse/news/4.11/jdt.php#junit-5.4
-* https://www.eclipse.org/eclipse/news/4.11/jdt.php#junit-test-factory
-* https://www.eclipse.org/eclipse/news/4.13/jdt.php#junit-5.5.1
-
-
+== Retour au slide second épisode
 
 === Java Formatter
 
-* https://www.eclipse.org/eclipse/news/4.8/jdt.php#formatter-profile
-* https://www.eclipse.org/eclipse/news/4.8/jdt.php#formatter-javadoc
-* https://www.eclipse.org/eclipse/news/4.9/jdt.php#compact-loops
-* https://www.eclipse.org/eclipse/news/4.9/jdt.php#align-spaces
-* https://www.eclipse.org/eclipse/news/4.10/jdt.php#one-line
-* https://www.eclipse.org/eclipse/news/4.11/jdt.php#wrap-binary-expressions
-* https://www.eclipse.org/eclipse/news/4.11/jdt.php#spaces-binary-expressions
-* https://www.eclipse.org/eclipse/news/4.11/jdt.php#wrap-chained-conditionals
-* https://www.eclipse.org/eclipse/news/4.11/jdt.php#javadoc-tags-indent
-* https://www.eclipse.org/eclipse/news/4.12/jdt.php#switch-spaces
-* https://www.eclipse.org/eclipse/news/4.12/jdt.php#split-switch-case-labels
-* https://www.eclipse.org/eclipse/news/4.13/jdt.php#remove-excess-blank-lines
-* https://www.eclipse.org/eclipse/news/4.13/jdt.php#blank-lines-changes
+[NOTE.speaker]
+====
 
-== Quick search
+Si ça fait longtemps que vous ne l'avez pas ouvert, vous allez avoir un choc.
 
-* https://www.eclipse.org/eclipse/news/4.13/platform.php#quick-text-search
+Nombreuses amélioration du formateur Java :
 
-== Other stuff
-
-* https://www.eclipse.org/eclipse/news/4.13/pl(N)atform_isv.php#gdkpixbuf-imageloader
+* La section `Blank lines` a été complètement revue
+** Reformulation de certaines préférences
+** Ajout de préférence pour ajouter des lignes 
+*** en fin de méthodes / constructeurs...
+*** en début et fin de block
+*** ...
+* Quelques amélioration sur la partie Javadoc (dont l'alignement des tags)
+* Meilleure gestion du formatage lors de l'utilisation conditionnel chainé
+* Meilleur alignement des champs et de leur valeur.
 
 
-== Working set
+====
 
-* https://www.eclipse.org/eclipse/news/4.8/platform.php#open-close-workingset-projects
+=== Amélioration en vrac du support de Java
 
-== Pour aller plus loin aka 4.14
 
-* https://www.eclipse.org/eclipse/news/4.14/platform.php#quick-access-improvements
-* https://www.eclipse.org/eclipse/news/4.14/platform.php#delete-spaces-as-tabs
+[NOTE.speaker]
+====
 
-== Generic Editor
+====
 
-* https://www.eclipse.org/eclipse/news/4.8/platform.php#occurrences_label_generic_editor-dark-theme
 
 ==================================================
 DONE
@@ -701,11 +678,132 @@ DONE
 * https://www.eclipse.org/eclipse/news/4.11/platform.php#onboarding-text
 * https://www.eclipse.org/eclipse/news/4.10/platform.php#workspace-dialog-directory-proposals
 * https://www.eclipse.org/eclipse/news/4.13/platform.php#close-project-via-middle-click
-
+* https://www.eclipse.org/eclipse/news/4.8/jdt.php#navigate-to-switch
 * https://www.eclipse.org/eclipse/news/4.12/jdt.php#quickfix-default-switch-statement
 * https://www.eclipse.org/eclipse/news/4.12/jdt.php#quickfix-missing-case-switch-statement
 * https://www.eclipse.org/eclipse/news/4.12/jdt.php#quickfix-default-switch-expression
 * https://www.eclipse.org/eclipse/news/4.12/jdt.php#quickfix-missing-case-switch-expression
+* https://www.eclipse.org/eclipse/news/4.10/jdt.php#add-var-lambda-parameter-types
+* https://www.eclipse.org/eclipse/news/4.10/jdt.php#replace-lambda-parameter-types-with-var
+* https://www.eclipse.org/eclipse/news/4.10/jdt.php#replace-var-lambda-parameter-types
+* https://www.eclipse.org/eclipse/news/4.12/jdt.php#new-switch_labeled_statment_expression_template
+* https://www.eclipse.org/eclipse/news/4.12/jdt.php#javadoc-support-tags
+* https://www.eclipse.org/eclipse/news/4.9/jdt.php#java7-hashcode-equals
+* https://www.eclipse.org/eclipse/news/4.9/jdt.php#create-abstract-method
+* https://www.eclipse.org/eclipse/news/4.9/jdt.php#convert-to-static-import
+* https://www.eclipse.org/eclipse/news/4.10/jdt.php#localVariable-var-support
+* https://www.eclipse.org/eclipse/news/4.10/jdt.php#quick-assist-junit-test-case
+* https://www.eclipse.org/eclipse/news/4.12/jdt.php#getter-setter-quick-assist
+* https://www.eclipse.org/eclipse/news/4.10/jdt.php#remove-lambda-parameter-types
+* https://www.eclipse.org/eclipse/news/4.11/jdt.php#service-provider-quick-fix
+* https://www.eclipse.org/eclipse/news/4.12/jdt.php#service-provider-constructor-quick-fix
+* https://www.eclipse.org/eclipse/news/4.13/jdt.php#foreach-loop-collections
+* https://www.eclipse.org/eclipse/news/4.13/jdt.php#full-build-on-jdt-core-settings-change
+* https://www.eclipse.org/eclipse/news/4.13/jdt.php#autoboxing-unboxing
+* https://www.eclipse.org/eclipse/news/4.13/jdt.php#enhanced-redundant-modifier-removal
+* https://www.eclipse.org/eclipse/news/4.8/jdt.php#jdt-remove-redundant-modifiers-cleanup
+
+=== JUnit 
+
+* https://www.eclipse.org/eclipse/news/4.8/jdt.php#junit-5-support
+* https://www.eclipse.org/eclipse/news/4.10/jdt.php#junit-5.3.1
+* https://www.eclipse.org/eclipse/news/4.11/jdt.php#junit-5.4
+* https://www.eclipse.org/eclipse/news/4.11/jdt.php#junit-test-factory
+* https://www.eclipse.org/eclipse/news/4.13/jdt.php#junit-5.5.1
+
+
+=== Non fait
+
+* https://www.eclipse.org/eclipse/news/4.12/jdt.php#split-switch-case-labels
+* https://www.eclipse.org/eclipse/news/4.10/jdt.php#ignore-completion-proposal-insertion-triggers
+* https://www.eclipse.org/eclipse/news/4.12/jdt.php#quickfix-open-missing-projects
+* https://www.eclipse.org/eclipse/news/4.12/jdt.php#jstc-clear-initial-message
+* https://www.eclipse.org/eclipse/news/4.13/jdt.php#final-fields-quickfix
+* https://www.eclipse.org/eclipse/news/4.13/jdt.php#javadoc-for-module-info
+* https://www.eclipse.org/eclipse/news/4.13/jdt.php#chain-completion
+* https://www.eclipse.org/eclipse/news/4.8/platform.php#detach-editor-view
+* https://www.eclipse.org/eclipse/news/4.9/platform.php#zoom-changed (Only Windows User)
+* https://www.eclipse.org/eclipse/news/4.11/platform.php#performance-improvements
+* https://www.eclipse.org/eclipse/news/4.9/jdt.php#support-long-classpath
+* https://www.eclipse.org/eclipse/news/4.8/jdt.php#escape-non-ascii-when-pasting
+* https://www.eclipse.org/eclipse/news/4.8/jdt.php#nonnullbydefault-per-module
+* https://www.eclipse.org/eclipse/news/4.8/jdt.php#nonnullbydefault-improvements
+* https://www.eclipse.org/eclipse/news/4.9/jdt.php#step-compiler-compliance
+* https://www.eclipse.org/eclipse/news/4.10/jdt.php#new-module-declaration
+* https://www.eclipse.org/eclipse/news/4.10/jdt.php#Create-module-info-on-projects-below-9
+* https://www.eclipse.org/eclipse/news/4.11/jdt.php#default-constant-values
+* https://www.eclipse.org/eclipse/news/4.12/jdt.php#comment-generation-checkbox
+* https://www.eclipse.org/eclipse/news/4.12/jdt.php#buildpath-module-dependencies
+* https://www.eclipse.org/eclipse/news/4.13/jdt.php#console-output-synchronization
+* https://www.eclipse.org/eclipse/news/4.8/platform.php#content-type-editor-association
+* https://www.eclipse.org/eclipse/news/4.8/platform.php#contenttype-filename-pattern
+* https://www.eclipse.org/eclipse/news/4.8/platform.php#parallel-builds-preference
+* https://www.eclipse.org/eclipse/news/4.8/platform.php#report-missing-nature-as-marker
+* https://www.eclipse.org/eclipse/news/4.8/platform.php#keys-export-commandid-csv
+* https://www.eclipse.org/eclipse/news/4.8/platform.php#preference-import-export-buttons
+* https://www.eclipse.org/eclipse/news/4.8/jdt.php#jdt-complier-building-preference
+* https://www.eclipse.org/eclipse/news/4.9/platform.php#platform-team-gsettings-migration
+* https://www.eclipse.org/eclipse/news/4.9/platform.php#hide-quick-access-per-default
+* https://www.eclipse.org/eclipse/news/4.10/jdt.php#build-path-problems
+* https://www.eclipse.org/eclipse/news/4.13/platform.php#close-editors-automatically
+* https://www.eclipse.org/eclipse/news/4.13/platform.php#text-editors-color-preview
+
+== Quick search 
+
+* https://www.eclipse.org/eclipse/news/4.13/platform.php#quick-text-search
+
+
+== Pour aller plus loin aka 4.14
+
+* https://www.eclipse.org/eclipse/news/4.14/platform.php#quick-access-improvements
+* https://www.eclipse.org/eclipse/news/4.14/platform.php#delete-spaces-as-tabs
+
+== Java Formatter
+
+* https://www.eclipse.org/eclipse/news/4.8/jdt.php#formatter-profile
+* https://www.eclipse.org/eclipse/news/4.8/jdt.php#formatter-javadoc
+* https://www.eclipse.org/eclipse/news/4.9/jdt.php#compact-loops
+* https://www.eclipse.org/eclipse/news/4.9/jdt.php#align-spaces
+* https://www.eclipse.org/eclipse/news/4.10/jdt.php#one-line
+* https://www.eclipse.org/eclipse/news/4.11/jdt.php#wrap-binary-expressions
+* https://www.eclipse.org/eclipse/news/4.11/jdt.php#spaces-binary-expressions
+* https://www.eclipse.org/eclipse/news/4.11/jdt.php#wrap-chained-conditionals
+* https://www.eclipse.org/eclipse/news/4.11/jdt.php#javadoc-tags-indent
+* https://www.eclipse.org/eclipse/news/4.12/jdt.php#switch-spaces
+* https://www.eclipse.org/eclipse/news/4.12/jdt.php#split-switch-case-labels
+* https://www.eclipse.org/eclipse/news/4.13/jdt.php#remove-excess-blank-lines
+* https://www.eclipse.org/eclipse/news/4.13/jdt.php#blank-lines-changes
+
+
+== Java Developer
+
+=== Java 9
+
+* https://www.eclipse.org/eclipse/news/4.8/jdt.php#java-9
+* https://www.eclipse.org/eclipse/news/4.8/jdt.php#module-info-paste
+* https://www.eclipse.org/eclipse/news/4.8/jdt.php#content-assist-module-declaration-name
+* https://www.eclipse.org/eclipse/news/4.8/jdt.php#quickfix-javadoc
+* https://www.eclipse*.org/eclipse/news/4.8/jdt.php#newproject-modulefile
+* https://www.eclipse.org/eclipse/news/4.8/jdt.php#override-dependencies
+
+=== Java 10
+
+* https://www.eclipse.org/eclipse/news/4.8/jdt.php#java-10
+* https://www.eclipse.org/eclipse/news/4.8/jdt.php#quickfix-change-compliance-10
+
+=== Java 11
+
+* https://www.eclipse.org/eclipse/news/4.10/jdt.php#java-11
+* https://www.eclipse.org/eclipse/news/4.10/jdt.php#java-11-jre
+* https://www.eclipse.org/eclipse/news/4.10/jdt.php#quickfix-change-compliance-11
+
+=== Java 12
+
+* https://www.eclipse.org/eclipse/news/4.11/jdt.php#Java%2012
+* https://www.eclipse.org/eclipse/news/4.12/jdt.php#quickfix-change-compliance-12
+* https://www.eclipse.org/eclipse/news/4.12/jdt.php#enable-preview
+* https://www.eclipse.org/eclipse/news/4.12/jdt.php#quickfix-enable-preview-12
+* https://www.eclipse.org/eclipse/news/4.12/jdt.php#quickfix-configure-severity-12
 
 ==============================================================
 BUG
