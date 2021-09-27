@@ -1,0 +1,288 @@
+= Les nouveautés Eclipse IDE pour le développeur Java
+
+== Avertissement
+
+Cette présentation ne se veut pas exhaustive sur les nouveautés disponibles pour le développeur Java.
+Un choix a été fait pour ne pas être qu'une simple liste à la Prévert et il se peut que certaines améliorations que vous auriez jugée importantes ne soient pas dans ce talk.
+Certaines nouveautés ne s'adressent pas exclusivement aux développeurs Java mais à tous les utilisateurs de Eclipse IDE.
+
+== Quelle version de Eclipse IDE ?
+
+[NOTE.speaker]
+====
+Pour ce Tools In Action j'utile la version Eclipse IDE for Java Developers
+
+J'ai également ajouté un plugin pour le support Java 17 via le Marketplace. 
+Si vous souhaitez utiliser Java 17 dès maintenant, c'est la manière de faire. 
+La support sera intégré directement sans passer par le Marketplace.
+
+A noter que si vous installez des plugins, l'acceptation des licences est maintenant persistée.
+====
+
+== Quoi de neuf dans Eclipse IDE depuis la 4.15 (2020-03-18)
+
+[NOTE.speaker]
+====
+On va effectivement balayer un peu plus d'un an de nouveauté. 
+Au vu de l'actualité de l'an dernier, il me semble que cela peut être nécessaire.
+====
+
+=== Importer le projet
+
+[NOTE.speaker]
+====
+En ligne de commande, lancer Eclipse IDE avec le chemin vers le projet de démo
+====
+
+=== Configurer l'IDE
+
+[NOTE.speaker]
+====
+On part d'un workspace vierge.
+Ceci peut être nécessaire si vous migrez vos workspaces depuis longtemps. 
+En effet, les icones des vues référencaient des GIF mais ceux-ci ont été mis à jour par des PNG en 4.17.
+
+* Activer l'affichage des raccourcis clavier
+* Ajouter le jdk 17
+* Afficher la vue `Project Explorer` : le layout est par défaut en hiérarchique
+====
+
+
+=== Amélioration générale de l'ergonomie
+
+[NOTE.speaker]
+====
+
+====
+
+=== Console view
+
+[NOTE.speaker]
+====
+* Ctrl + 3 > Console > Enable word wrap. +
+Synchro avec ce qui est présent au clic droit dans la console.
+
+* Heure d'arrêt du process
+
+Une fois une recherche effectuée dans la console, on peut utiliser : 
+
+* ctrl+K : prochaine occurence
+* ctrl+shift+k : occurence prédédente
+
+====
+
+
+== En résumé
+
+Si vous n'avez pas mis à jour votre IDE depuis longtemps, faites-le, ce sera bénéfique.
+
+== Références
+
+=== Légende sur les références
+
+C'est un peu une sorte d'hommage à k33g_org.
+
+* ✅ : ajouté au talk
+* 💓 : souhaité pour le talk
+
+=== Contenu
+
+* General UX improvements:
+** https://www.eclipse.org/eclipse/news/4.15/platform.php#project-explorer-default-to-hierarchical[Hierarchical project layout by default in Project Explorer (4.15)] ✅
+** https://www.eclipse.org/eclipse/news/4.16/platform.php[Create missing folders from the New File wizard (4.16)]✅💓
+** https://www.eclipse.org/eclipse/news/4.16/platform.php#eclipse-win-ligatures-support[Support ligature on Windows (4.16)]
+** https://www.eclipse.org/eclipse/news/4.16/platform.php#show-keybinding[Show key bindings when command is invoked (4.16)]✅💓
+** https://www.eclipse.org/eclipse/news/4.17/platform.php#adjustable-view-fonts[Adjustable view fonts (4.17)]
+** https://www.eclipse.org/eclipse/news/4.17/platform.php#remove-gifs[Remove gifs from views (4.17)] ✅
+** https://www.eclipse.org/eclipse/news/4.17/platform.php#confirm-on-exit[Default changed for confirm on exit for last window (4.17)]
+** https://www.eclipse.org/eclipse/news/4.17/platform.php#multiple-last-edit-locations[Multiple Last Edit Locations (4.16)]
+** https://www.eclipse.org/eclipse/news/4.17/jdt.php#toggle-code-minings[Toggle Code Minings From Find Actions Menu (4.17)]
+** https://www.eclipse.org/eclipse/news/4.18/platform.php#remember-last-search[Preference to remember the last used page in search dialog (4.18)]✅💓
+** https://www.eclipse.org/eclipse/news/4.18/platform.php#store-default-editor[Open-with does not store the editor relationship anymore (4.18)]
+** https://www.eclipse.org/eclipse/news/4.19/platform.php#editors-horizontal-scroll[Horizontal Scrolling in Text Editor (4.19)]✅💓
+** https://www.eclipse.org/eclipse/news/4.20/platform.php#quick-text-search[Quick Search mentions max occurrences reached (4.20)]✅💓
+** https://www.eclipse.org/eclipse/news/4.20/platform.php#history-for-derived-files[History for derived files (4.20)]
+** https://www.eclipse.org/eclipse/news/4.21/platform.php#persist-accepted-licences[Accepted licenses remembered permanently (4.21)]✅💓
+
+* Java UX improvements:
+** https://www.eclipse.org/eclipse/news/4.18/jdt.php#search-permitted-types[Fine-grained search for permitted types (4.18)]
+** https://www.eclipse.org/eclipse/news/4.18/jdt.php#package-explorer-lib-sortedbydefault[Sort library entries alphabetically in Package Explorer enabled by default (4.18)]
+** https://www.eclipse.org/eclipse/news/4.19/jdt.php#parallel-index-search[Parallel index search (4.19)]✅💓
+** https://www.eclipse.org/eclipse/news/4.19/jdt.php#restricted-identifier-preference[Coloring restricted identifiers (4.19)]
+** https://www.eclipse.org/eclipse/news/4.19/jdt.php#annotate-for-source-folders[Externally annotate sources (4.19)]
+** https://www.eclipse.org/eclipse/news/4.20/jdt.php#search-filter-static-imports[Differentiate search filter for normal imports from static imports (4.20)]
+** https://www.eclipse.org/eclipse/news/4.20/jdt.php#create-moduleinfo[Create module-info.java option during New Java Project creation (4.20)]
+** https://www.eclipse.org/eclipse/news/4.21/jdt.php#default-type-filters[Default Type Filters (4.21)]✅💓
+
+* Java Support:
+** https://www.eclipse.org/eclipse/news/4.15/jdt.php#Java_14[Java 14 through Marketplace (4.15)]
+** https://www.eclipse.org/eclipse/news/4.16/jdt.php#Java_14[Java 14 out of the box (4.16)]
+** https://www.eclipse.org/eclipse/news/4.16/jdt.php#new-record-creation-wizard[Record Creation Wizard (4.16)]
+** https://www.eclipse.org/eclipse/news/4.17/jdt.php#Java_15[Java 15 through Marketplace (4.17)]
+** https://www.eclipse.org/eclipse/news/4.19/jdt.php#Java_16[Java 16 through Marketplace (4.19)]
+** https://www.eclipse.org/eclipse/news/4.21/jdt.php#Java_17[Java 17 through Marketplace (4.21)]✅💓
+
+* Java Editor: 
+** https://www.eclipse.org/eclipse/news/4.15/jdt.php#subword-code-completion[Subword code completion (4.15)]✅💓
+** https://www.eclipse.org/eclipse/news/4.15/jdt.php#subtype-code-completion[Subtype code completion (4.15)]✅💓
+** https://www.eclipse.org/eclipse/news/4.15/jdt.php#non-blocking-completion[Option for non-blocking Java completion (4.15)]
+** https://www.eclipse.org/eclipse/news/4.15/jdt.php#import-completion[No more spurious semicolon from import completion (4.15)]
+** https://www.eclipse.org/eclipse/news/4.16/jdt.php#new-record-template[Template to create new record (4.16)]
+** https://www.eclipse.org/eclipse/news/4.16/jdt.php#default-non-blocking-completion[Non-blocking Java code completion (4.16)]
+** https://www.eclipse.org/eclipse/news/4.17/jdt.php#content-assist-substring-types[Substring/Subword matches for types (4.17)]✅💓
+** https://www.eclipse.org/eclipse/news/4.18/jdt.php#completion-overwrites[Completion overwrites in Java editor (4.18)]✅💓
+** https://www.eclipse.org/eclipse/news/4.18/jdt.php#param-best-guessed[Insert best guessed parameters in Java editor (4.18)]✅💓
+** https://www.eclipse.org/eclipse/news/4.21/jdt.php#raw-paste[Raw Paste (4.21)]✅💓
+
+* Java Compiler: 
+** https://www.eclipse.org/eclipse/news/4.15/jdt.php#null-legacy-interface[Warn when legacy code can taint null-checked values (4.15)]
+** https://www.eclipse.org/eclipse/news/4.15/jdt.php#resource-leak-analysis[Improved Resource leak analysis (4.15)]
+** https://www.eclipse.org/eclipse/news/4.21/jdt.php#external_annotations_all_locations[Find external annotations anywhere (4.21)]
+
+* Java Formatter: 
+** https://www.eclipse.org/eclipse/news/4.15/jdt.php#formatter-application[Java formatter application requires a workspace (4.15)]
+** https://www.eclipse.org/eclipse/news/4.16/jdt.php#formatter-records[Record declarations support (4.16)]
+** https://www.eclipse.org/eclipse/news/4.17/jdt.php#formatter-wrap-assert[Assert statement wrapping (4.17)]
+** https://www.eclipse.org/eclipse/news/4.18/jdt.php#formatter-wrap-annotations[Annotations wrapping (4.18)]
+
+* Quick assist:
+** https://www.eclipse.org/eclipse/news/4.15/jdt.php#quickfix-wrap-optional[Quick fix to wrap Optional statements (4.15)]
+** https://www.eclipse.org/eclipse/news/4.15/jdt.php#module-info-javadoc-quickfix[Quick fixes for module-info Javadoc (4.15)]
+** https://www.eclipse.org/eclipse/news/4.15/jdt.php#surround-with-try-with-resources[Surround with "try-with-resources" block (4.15)]✅💓
+** https://www.eclipse.org/eclipse/news/4.16/jdt.php#quickfix-switch-expression-return-to-yield[Quick fix to change return statement to yield statement in Switch Expression (4.16)]
+** https://www.eclipse.org/eclipse/news/4.17/jdt.php#method_reference-quickfix[Method reference quickfix (4.17)]
+** https://www.eclipse.org/eclipse/news/4.18/jdt.php#quick-assist-new-impl[Quick assist to create new implementation (4.18)]
+** https://www.eclipse.org/eclipse/news/4.18/jdt.php#quick-fixes-permitted-types[Quick fixes on permitted types (4.18)]
+** https://www.eclipse.org/eclipse/news/4.19/jdt.php#try-with-resources-quick-assist[Quick assist to create try-with-resources (4.19)]✅💓
+** https://www.eclipse.org/eclipse/news/4.19/jdt.php#add-catch-to-try-with-resources-assists[Add catch clause to try-with-resources assists (4.19)]
+** https://www.eclipse.org/eclipse/news/4.19/jdt.php#create-permitted-type-declaration[Quick fix to create permitted type declaration (4.19)]
+** https://www.eclipse.org/eclipse/news/4.20/jdt.php#foreach-expression-type[Better type for the local variable creation quick fix (4.20)]
+** https://www.eclipse.org/eclipse/news/4.21/jdt.php#while-to-do-while[Convert while to do/while (4.21)]
+** https://www.eclipse.org/eclipse/news/4.21/jdt.php#extract-superclass-enhancement[Extract Superclass Enhancement (4.21)]✅💓
+** https://www.eclipse.org/eclipse/news/4.21/jdt.php#change-compliance-jre-multi-constant-labels[Change project compliance and JRE on using multi-constant case labels (4.21)]
+** https://www.eclipse.org/eclipse/news/4.21/jdt.php#declare-sealed-interface-as-super-interface[Quick fix to declare sealed interface as super interface (4.21)]✅💓
+** https://www.eclipse.org/eclipse/news/4.21/jdt.php#declare-sealed-class-as-super-class[Quick fix to declare sealed class as super class (4.21)]✅💓
+** https://www.eclipse.org/eclipse/news/4.21/jdt.php#add-sub%20-type-as-permitted%20-type-of-sealed-type[Quick fix to add the sub type to permitted types of sealed super type (4.21)]✅💓
+
+* Clean up (71 new cleanups): ✅💓
+** https://www.eclipse.org/eclipse/news/4.15/jdt.php#improve-lambda[Simplify functional interface instances (4.15)]
+** https://www.eclipse.org/eclipse/news/4.15/jdt.php#improve-lambda[Directly use Map method (4.15)]
+** https://www.eclipse.org/eclipse/news/4.15/jdt.php#uppercase-literal-suffix[Uppercase for long literal suffix (4.15)]
+** https://www.eclipse.org/eclipse/news/4.16/jdt.php#merge-conditional[Merge control workflows (4.16)]
+** https://www.eclipse.org/eclipse/news/4.16/jdt.php#variable-type-inference[Local variable type inference (4.16)]
+** https://www.eclipse.org/eclipse/news/4.16/jdt.php#lazy-logical[Prefer lazy logical operators (4.16)]
+** https://www.eclipse.org/eclipse/news/4.17/jdt.php#optimization[Optimization tab (4.17)]
+** https://www.eclipse.org/eclipse/news/4.17/jdt.php#objects-equals[Objects.equals() (4.17)]
+** https://www.eclipse.org/eclipse/news/4.17/jdt.php#regex[Precompiles the regular expressions (4.17)]✅💓
+** https://www.eclipse.org/eclipse/news/4.17/jdt.php#String.format-quickfix[String.format quickfix (4.17)]
+** https://www.eclipse.org/eclipse/news/4.18/jdt.php#switch-expressions[Convert to switch expression (4.18)]
+** https://www.eclipse.org/eclipse/news/4.18/jdt.php#else-if[Uses the else-if pseudo keyword (4.18)]
+** https://www.eclipse.org/eclipse/news/4.18/jdt.php#bitwise-expressions[Bitwise expressions in comparisons (4.18)]
+** https://www.eclipse.org/eclipse/news/4.18/jdt.php#pull-up-assignment[Pull up assignment (4.18)]
+** https://www.eclipse.org/eclipse/news/4.18/jdt.php#use-switch[Use switch (4.18)]
+** https://www.eclipse.org/eclipse/news/4.18/jdt.php#add-remove[Add elements in collections without loop (4.18)]✅💓
+** https://www.eclipse.org/eclipse/news/4.18/jdt.php#ternary-operator[Use ternary operator (4.18)]
+** https://www.eclipse.org/eclipse/news/4.18/jdt.php#xor[Use '==' or '^' on booleans (4.18)]
+** https://www.eclipse.org/eclipse/news/4.18/jdt.php#redundant-falling-blocks[Redundant falling through blocks (4.18)]
+** https://www.eclipse.org/eclipse/news/4.18/jdt.php#if-condition[Redundant if condition (4.18)]
+** https://www.eclipse.org/eclipse/news/4.18/jdt.php#hash[Use Objects.hash() (4.18)]
+** https://www.eclipse.org/eclipse/news/4.18/jdt.php#string-join[Use String.join() (4.18)]
+** https://www.eclipse.org/eclipse/news/4.18/jdt.php#arrays-fill[Use Arrays.fill() (4.18)]
+** https://www.eclipse.org/eclipse/news/4.18/jdt.php#redundant-null-check[Evaluate without null check (4.18)]
+** https://www.eclipse.org/eclipse/news/4.18/jdt.php#double-negation[Avoid double negation (4.18)]
+** https://www.eclipse.org/eclipse/news/4.18/jdt.php#redundant-comparison-statement[Redundant comparison statement (4.18)]
+** https://www.eclipse.org/eclipse/news/4.18/jdt.php#redundant-super[Unnecessary super() call (4.18)]
+** https://www.eclipse.org/eclipse/news/4.18/jdt.php#collection-cloning[Initialize collection at creation (4.18)]
+** https://www.eclipse.org/eclipse/news/4.18/jdt.php#map-cloning[Initialize map at creation (4.18)]
+** https://www.eclipse.org/eclipse/news/4.18/jdt.php#overridden-assignment[Remove overridden assignment (4.18)]
+** https://www.eclipse.org/eclipse/news/4.18/jdt.php#embedded-if[Raise embedded if into parent if (4.18)]
+** https://www.eclipse.org/eclipse/news/4.18/jdt.php#redundant-return[Redundant return (4.18)]
+** https://www.eclipse.org/eclipse/news/4.18/jdt.php#redundant-continue[Redundant continue (4.18)]
+** https://www.eclipse.org/eclipse/news/4.18/jdt.php#try-with-resource[Use try-with-resource (4.18)]
+** https://www.eclipse.org/eclipse/news/4.18/jdt.php#break-loop[Exit loop earlier (4.18)]
+** https://www.eclipse.org/eclipse/news/4.18/jdt.php#stringbuilder[Use StringBuilder (4.18)]
+** https://www.eclipse.org/eclipse/news/4.18/jdt.php#primitive-serialization[Primitive serialization (4.18)]
+** https://www.eclipse.org/eclipse/news/4.18/jdt.php#boolean-literal[Prefer boolean literal (4.18)]
+** https://www.eclipse.org/eclipse/news/4.18/jdt.php#diamond-operator[Diamond operator <> (Remove redundant type arguments) (4.18)]
+** https://www.eclipse.org/eclipse/news/4.19/jdt.php#java-feature[Java Feature clean ups (4.19)]✅💓
+** https://www.eclipse.org/eclipse/news/4.19/jdt.php#pattern-matching[Pattern matching for instanceof clean up (4.19)]✅💓
+** https://www.eclipse.org/eclipse/news/4.19/jdt.php#reduce-indentation[Reduce indentation clean up (4.19)]
+** https://www.eclipse.org/eclipse/news/4.19/jdt.php#extract-increment[Extract increment clean up (4.19)]
+** https://www.eclipse.org/eclipse/news/4.19/jdt.php#comparator-comparing[Use Comparator.comparing() clean up (4.19)]
+** https://www.eclipse.org/eclipse/news/4.19/jdt.php#multi-catch[Multi-catch clean up (4.19)]
+** https://www.eclipse.org/eclipse/news/4.19/jdt.php#convert-fields[Convert fields into local variables (4.19)]
+** https://www.eclipse.org/eclipse/news/4.19/jdt.php#static-inner-class[Static inner class clean up (4.19)]
+** https://www.eclipse.org/eclipse/news/4.19/jdt.php#string-replace[Use String.replace() clean up (4.19)]
+** https://www.eclipse.org/eclipse/news/4.19/jdt.php#primitive-comparison[Primitive comparison clean up (4.19)]
+** https://www.eclipse.org/eclipse/news/4.19/jdt.php#primitive-parsing[Primitive parsing clean up (4.19)]
+** https://www.eclipse.org/eclipse/news/4.19/jdt.php#control-flow-merge[Pull down common code from if/else statement clean up (4.19)]
+** https://www.eclipse.org/eclipse/news/4.19/jdt.php#substring[String.substring() clean up (4.19)]
+** https://www.eclipse.org/eclipse/news/4.19/jdt.php#unreachable-block[Unreachable block clean up (4.19)]
+** https://www.eclipse.org/eclipse/news/4.19/jdt.php#unlooped-while[Unlooped while clean up (4.19)]
+** https://www.eclipse.org/eclipse/news/4.19/jdt.php#source-fixing[Source Fixing clean ups (4.19)]
+** https://www.eclipse.org/eclipse/news/4.19/jdt.php#invert-equals[Object.equals() on non null clean up (4.19)]
+** https://www.eclipse.org/eclipse/news/4.19/jdt.php#comparison-zero[Comparison to zero clean up (4.19)]
+** https://www.eclipse.org/eclipse/news/4.20/jdt.php#use-instanceof[Use instanceof clean up (4.20)]
+** https://www.eclipse.org/eclipse/news/4.20/jdt.php#operand-factorization[Operand factorization clean up (4.20)]
+** https://www.eclipse.org/eclipse/news/4.20/jdt.php#pull-out-if[Pull out a duplicate 'if' from an if/else clean up (4.20)]
+** https://www.eclipse.org/eclipse/news/4.20/jdt.php#one-falling-through-if[One if rather than duplicate blocks that fall through clean up (4.20)]
+** https://www.eclipse.org/eclipse/news/4.20/jdt.php#isblank[Uses String.isBlank() clean up (4.20)]
+** https://www.eclipse.org/eclipse/news/4.20/jdt.php#valueof-rather-than-instantiation[valueOf() rather than instantiation clean up (4.20)]✅💓
+** https://www.eclipse.org/eclipse/news/4.20/jdt.php#primitive-rather-than-wrapper[Primitive rather than wrapper clean up (4.20)]
+** https://www.eclipse.org/eclipse/news/4.20/jdt.php#redundant-truth[Redundant truth clean up (4.20)]
+** https://www.eclipse.org/eclipse/news/4.20/jdt.php#implicit-comparator[Implicit comparator clean up (4.20)]
+** https://www.eclipse.org/eclipse/news/4.20/jdt.php#array-with-curly[Initialize array with curly clean up (4.20)]✅💓
+** https://www.eclipse.org/eclipse/news/4.20/jdt.php#return-without-assignment[Remove variable assignment before return clean up (4.20)]
+** https://www.eclipse.org/eclipse/news/4.20/jdt.php#replace-system-properties[Replace System.getProperty() calls clean up (4.20)]
+** https://www.eclipse.org/eclipse/news/4.20/jdt.php#cleanup-profile-updated[Default Java cleanup profile of Eclipse has been updated (4.20)]
+** https://www.eclipse.org/eclipse/news/4.21/jdt.php#stringbuffer-to-stringbuilder[Use StringBuilder instead of StringBuffer clean up (4.21)]✅💓
+
+* JUnit:
+** https://www.eclipse.org/eclipse/news/4.17/jdt.php#junit-collapse-all[Collapse all nodes in JUnit view (4.17)]
+** https://www.eclipse.org/eclipse/news/4.17/jdt.php#junit-sort-time[Sort test results by execution time (4.17)]
+** https://www.eclipse.org/eclipse/news/4.18/jdt.php#junit-5.7[JUnit 5.7 (4.18)]
+** https://www.eclipse.org/eclipse/news/4.19/jdt.php#junit-5.7.1[JUnit 5.7.1 (4.19)]
+** https://www.eclipse.org/eclipse/news/4.19/jdt.php#mockito-static-imports[static import org.mockito.Mockito.* available as favorite (4.19)]✅💓
+** https://www.eclipse.org/eclipse/news/4.21/jdt.php#mockitomatchers[mockito ArgumentMatchers.* added to favorites in Java tooling (4.20)]✅💓
+
+* Debug:
+** https://www.eclipse.org/eclipse/news/4.15/jdt.php#functional-expressions-in-debug[Functional debug expressions (4.15)]
+** https://www.eclipse.org/eclipse/news/4.16/platform.php#import-selectall['Select All' and 'Deselect All' for Import breakpoints wizard (4.16)]
+** https://www.eclipse.org/eclipse/news/4.16/jdt.php#synthetic-variables-inspection[Synthetic variables inspection (4.16)]
+** https://www.eclipse.org/eclipse/news/4.17/jdt.php#anonymous-class-inspection[Anonymous class instance in evaluation (4.17)]✅💓
+** https://www.eclipse.org/eclipse/news/4.17/jdt.php#helpful-nullpointer-exceptions[JEP 358: Helpful NullPointerExceptions (4.17)]
+** https://www.eclipse.org/eclipse/news/4.17/jdt.php#variables-actual-type[Actual type in Variables view (4.17)]✅💓
+** https://www.eclipse.org/eclipse/news/4.18/platform.php#terminate-descendants[Terminate descendants of operating-system processes launched by Eclipse (4.17)]
+** https://www.eclipse.org/eclipse/news/4.18/jdt.php#formatter-wrap-annotations[Support for @argfiles when launching (4.18)]
+** https://www.eclipse.org/eclipse/news/4.18/jdt.php#logicalstructure-gc[Stabilized logical structures in Variables view with active GC (4.18)]
+** https://www.eclipse.org/eclipse/news/4.19/platform.php#disable-all-breakpoints[Disable All in Breakpoints view (4.19)]
+** https://www.eclipse.org/eclipse/news/4.19/platform.php#termination-of-descendants-is-configurable[Termination of child processes of launched OS processes can be configured (4.19)]
+** https://www.eclipse.org/eclipse/news/4.19/jdt.php#toggle-tracepoints[Toggle tracepoints in editor ruler (4.19)]✅💓
+** https://www.eclipse.org/eclipse/news/4.19/jdt.php#toggle-breakpoints-works-listofmethods-including-abstract[Toggle breakpoint on a list of methods including abstract method (4.19)]
+** https://www.eclipse.org/eclipse/news/4.20/jdt.php#copy-jars[Copy Run Configuration item details (4.20)]
+** https://www.eclipse.org/eclipse/news/4.20/jdt.php#debug-hover-chain-fields[Debug hover for chain of variables (4.20)]✅💓
+** https://www.eclipse.org/eclipse/news/4.21/jdt.php#debug-intrim-eval[Evaluate variables in current execution stack (4.21)]✅💓
+
+* Console View
+** https://www.eclipse.org/eclipse/news/4.15/platform.php#formfeed-character[Console View now interprets form feed and vertical tab characters (4.15)]
+** https://www.eclipse.org/eclipse/news/4.15/platform.php#termination-time[Termination time (4.15)]✅💓
+** https://www.eclipse.org/eclipse/news/4.17/platform.php#console-null-byte[Filter null bytes from console output (4.17)]
+** https://www.eclipse.org/eclipse/news/4.18/platform.php#console-word-wrap[Enable word wrap on console output (4.18)]✅💓
+** https://www.eclipse.org/eclipse/news/4.19/platform.php#console-find-next-find-previous[Find Next/Previous in Console View (4.19)]✅💓
+
+* Theme : 
+** https://www.eclipse.org/eclipse/news/4.15/platform.php#dark_welcome[Welcome screen in dark theme (4.15)]
+** https://www.eclipse.org/eclipse/news/4.16/platform.php#win-dark-theme-scrollbars[Native dark scrollbars in Windows dark theme (4.16)]
+** https://www.eclipse.org/eclipse/news/4.16/platform.php#light-theme-win10[Eclipse toolbar's styling on Windows aligned with Win 10 (4.16)]
+** https://www.eclipse.org/eclipse/news/4.16/platform.php#round-tabs-preference[Square tabs for views (4.16)]
+** https://www.eclipse.org/eclipse/news/4.16/platform.php#dark-toolbars[Consistent toolbar colors in dark theme (4.16)]
+** https://www.eclipse.org/eclipse/news/4.17/platform.php#gtk-light-theme[Improved GTK light theme (4.17)]
+** https://www.eclipse.org/eclipse/news/4.17/platform.php#dark-win32-menu[Windows menus are styled in the dark theme (4.17)]
+** https://www.eclipse.org/eclipse/news/4.17/platform.php#dark-win32-combo[Dropbox boxes (Combos) are styled under Windows in the dark theme (4.17)]
+** https://www.eclipse.org/eclipse/news/4.17/platform.php#dark-selection-highlighter[Selection highlighter for dark theme (4.17)]
+** https://www.eclipse.org/eclipse/news/4.17/platform.php#dark-selection-win32-highlighter[Selection highlighter for tables under Windows in the dark theme (4.17)]
+** https://www.eclipse.org/eclipse/news/4.18/platform.php#system-theme[New "System" theme (4.18)]
+** https://www.eclipse.org/eclipse/news/4.18/platform.php#win32-dark-progressbar[Windows dark theme styles progress bars (4.18)]
+** https://www.eclipse.org/eclipse/news/4.18/platform.php#mac-theme-light[Light theme on macOS (4.18)]
+** https://www.eclipse.org/eclipse/news/4.21/platform.php#new-close-icon[New close icon on tabs (4.21)]
+** https://www.eclipse.org/eclipse/news/4.21/platform.php#eclipse-win-dark-themed-tooltips[Eclipse Windows now supports dark-theme tool-tips (4.21)]
