@@ -16,74 +16,96 @@ import org.junit.jupiter.api.TestMethodOrder;
 @DisplayName("Les nouveautés Eclipse IDE")
 public class Talk {
 
-	@Order(30)
+	@Order(10)
 	@Nested
 	@TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 	@DisplayName("Amélioration générale de l'UX")
 	class GeneralUXImprovements {
 
-		boolean sectionPresente = false;
+		boolean sectionPresente = true;
 
 		@Order(10)
-		@DisplayName("Création d'un fichier avec le chemin")
+		@DisplayName("Quick Search : affichage max occurrences reached")
 		@Test
-		void creerClasseWithCodeSmell() {
+		void quickSearch() {
 			var partiePresente = false;
 			assertTrue(partiePresente || sectionPresente, """
-					- Ctrl+N > File > Put a name with / in the name
-					Création d'un fichier Java avec un chemin
-					Créer une classe `AllKinfOfCode`
+					- Ctrl+Alt+Shift+L => faire une recherche lettre `e`
+					- Montrer le max reached
 					""");
 		}
 	
 		@Order(20)
-		@DisplayName("Amélioration du Ctrl+3")
+		@DisplayName("Multi-sélection : c'est pas mail mais...")
+		@Test
+		void multiSelection() {
+			var partiePresente = false;
+			assertTrue(partiePresente || sectionPresente, """
+						- Possibilité de faire Alt+Click pour rajouter des curseurs.
+						- Ajout de commande. Elles ne sont pas mappés sur des raccourcis clavier par défaut 🙁
+						- Proposition de commandes mais nécessite de virer certains raccourcis clavier existants
+						-- Esc : End multi-selection
+						-- Ctrl-Alt-J : Multi selection down relative to anchor selection
+						-- Alt-J : Multi selection up relative to anchor selection
+						-- Ctrl-Shift-Alt-J : Add all matches to multi-selection
+						-- Ctrl-Alt-Shift-Up : Multi caret Up
+						-- Ctrl-Alt-Shift-Down : Multi caret down
+					""");
+		}
+
+		@Order(30)
+		@DisplayName("Multi-sélection : ... il manque 2/3 trucs")
 		@Test
 		void findAction() {
 			var partiePresente = false;
 			assertTrue(partiePresente || sectionPresente, """
-					Ctrl+3 > Montrer les différentes sections :
-
-					- previous choice
-					- Editors/ Views
-					- Command (action)
-					- Préférences
-					- Help
+						- le mapping de touches est pas fait par défaut
+						- il n'est pas possible de faire Ctrl+Shift+Left / Ctrl+Shift+Right mais ça marche avec Shift+End / Shift-Home
+						- le curseur est pas super joli, ça fait pas fini
 					""");
 		}
-
-		@Order(50)
-		@DisplayName("Préférences pour la dernière page de recherche")
+		
+		@Order(40)
+		@DisplayName("Explicit encoding")
 		@Test
-		void recherche() {
+		void explicitEncoding() {
 			var partiePresente = false;
 			assertTrue(partiePresente || sectionPresente, """
-					Montrer qu'il y a une préférence qui permet de conserver la dernière page de recherche.
-					Activée par défaut.
-
-					Montrer ce que ça donne.
-
-					Parler de la recherche Ctrl+Alt+Shift+L.
-					Parler du fait que l'on a maintenant une indication que la recherche a atteind la limite.
+						- JEP 400: UTF-8 by Default : https://openjdk.org/jeps/400 
+						- si pas d'encoding spécifié au démarrage d'Eclipse IDE, l'encoding par défaut des nouveaux workspace est UTF-8
+						- montrer Preferences > Workspaces
+						- Encoding nouveau projet UTF-8 : créer projet + montrer la conf (avec le fichier de conf)
+						- Warning pour les projets sans config sur l'encoding
+						- Possibilité de changer la sévérité du warning
+						
+						- Problème : le plugin m2e reset la préférence quand on fait un Alt+F5
+					""");
+		}
+		
+		@Order(50)
+		@DisplayName("Large File Association")
+		@Test
+		void largeFileAssociation() {
+			var partiePresente = false;
+			assertTrue(partiePresente || sectionPresente, """
+						- Préférence pour les large file association
+						- Utile par exemple pour de gros fichiers de log
 					""");
 		}
 
 		@Order(60)
-		@DisplayName("Horizontal scroll avec gesture ou Shift + Scroll")
+		@DisplayName("Word wrap pour les éditeurs de code")
 		@Test
 		void horizontalScroll() {
 			var partiePresente = false;
 			assertTrue(partiePresente || sectionPresente, """
-					Ouvrir un éditeur de code.
-					Réduire l'affichage.
-					Montrer le scroll avec le gesture.
-
-					Vraiment super pratique.
+						- Preferences > Text Editor > Enable Word Wrap
+						- j'aime pas surtout en Java
 					""");
 		}
 	}
 
-	@Order(40)
+	@Order(20)
 	@Nested
 	@TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 	@DisplayName("Amélioration UX autour de Java")
@@ -92,41 +114,23 @@ public class Talk {
 		boolean sectionPresente = false;
 
 		@Order(10)
-		@DisplayName("Nouvelle option de `Parallel Search` activée par défaut")
-		@Test
-		void parallelSearch() {
-			var partiePresente = false;
-			assertTrue(partiePresente || sectionPresente, """
-					Alors j'ai une gross habitude du search full text.
-					Mais la recherche onglet Java améliore ses performances sur des machines récentes.
-
-					Ctrl+3 > Java Search
-					""");
-		}
-
-		@Order(20)
 		@DisplayName("Nouvelle configuration par défaut sur les filtres de types")
 		@Test
 		void defaultTypeFilter() {
 			var partiePresente = false;
 			assertTrue(partiePresente || sectionPresente, """
-					Ctrl+3 > Type filter
-
-					Montrer la liste.
-
-					Aller dans le code.
-					Montrer que l'on ne voit plus `java.awt.List`
-
-					Impacte : Open Type dialog, content assist, quick fix, and organize imports
-
-					N'impacte pas la vue `Type hierarchy` ni le `Package Explorer`.
-
-					Disclaimer : si vous avez besoin d'utiliser certains types, désactiver le filtre sur le workspace.
+						- Ctrl+3 > Type filter
+						- Montrer la liste.
+						- Aller dans le code.
+						- Montrer que l'on ne voit plus `java.awt.List`
+						- Impacte : Open Type dialog, content assist, quick fix, and organize imports
+						- N'impacte pas la vue `Type hierarchy` ni le `Package Explorer`.
+						- Disclaimer : si vous avez besoin d'utiliser certains types, désactiver le filtre sur le workspace.
 					""");
 		}
 	}
 
-	@Order(50)
+	@Order(30)
 	@Nested
 	@TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 	@DisplayName("Amélioration de l'éditeur Java")
@@ -135,85 +139,35 @@ public class Talk {
 		boolean sectionPresente = false;
 
 		@Order(10)
-		@DisplayName("Subword code completion")
-		@Test
-		void subwordCodeCompletion() {
-			var partiePresente = false;
-			assertTrue(partiePresente || sectionPresente, """
-
-					Aller dans la classe `AllKindOfCode`
-
-					Prendre la méthode `subwordCodeCompletion`
-
-					Décommenter le code et montrer la complétion avec `all`
-
-					""");
-		}
-
-		@Order(20)
-		@DisplayName("Subtype code completion")
-		@Test
-		void subtypeCodeCompletion() {
-			var partiePresente = false;
-			assertTrue(partiePresente || sectionPresente, """
-
-					Aller dans la classe `AllKindOfCode`
-
-					Prendre la méthode `subtypeCodeCompletion`
-
-					Décommenter le code et montrer la complétion avec `L`
-
-					Montrer également le support complet du substring / subword matches pour les types
-					`linkedqueue`
-
-					""");
-		}
-
-		@Order(30)
-		@DisplayName("Completion overwrites")
-		@Test
-		void completionOverwrites() {
-			var partiePresente = false;
-			assertTrue(partiePresente || sectionPresente,
-					"""
-
-							Aller dans la classe `AllKindOfCode`
-
-							Prendre la méthode `completionOverwrites`
-
-							Décommenter le code et montrer le complétion overwrite.
-							Pour reproduire l'ancien comportement, appuyer sur Ctrl en même temps que l'on sélectionne la valeur.
-							""");
-		}
-
-		@Order(40)
-		@DisplayName("Inserer le paramètre deviné")
-		@Test
-		void insertBestGuessedParameters() {
-			var partiePresente = false;
-			assertTrue(partiePresente || sectionPresente, """
-
-					Aller dans la classe `AllKindOfCode`
-
-					Prendre la méthode `insertBestGuessedParameters`
-
-					Décommenter le code.
-					Lancer la complétion après `insertBestGuessedParametersOtherMethod`
-					""");
-		}
-
-		@Order(50)
 		@DisplayName("Menu pour le rawpaste")
 		@Test
 		void menuRawPaste() {
 			var partiePresente = false;
 			assertTrue(partiePresente || sectionPresente, """
-
+						- Aller dans `AllKindOfCode`
+						- Ctrl+Shift+Insert : pour changer le mode de collage
+						- Impossible à se souvenir
+						- utilisation menu raw paste
+						- sinon Ctrl+3 chercher `Raw paste`
+					""");
+		}
+		
+		@Order(20)
+		@DisplayName("Javadoc pour les module-info.java")
+		@Test
+		void moduleInfoJavadocCompletion() {
+			var partiePresente = false;
+			assertTrue(partiePresente || sectionPresente, """
+						- Ouvrir `module-info.java`
+						- Créer un module
+						- Ajouter une javadoc : montrer la complétion @see, @link et @linkplain
+						- Montrer le quickfix sur `ConversionResource` : changement module-info
+						- Montrer le quickfix pour changer la conf classpath
 					""");
 		}
 	}
 
-	@Order(60)
+	@Order(40)
 	@Nested
 	@TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 	@DisplayName("Quick Assist")
@@ -222,59 +176,62 @@ public class Talk {
 		boolean sectionPresente = false;
 
 		@Order(10)
-		@DisplayName("Surround with Try with resources")
-		@Test
-		void surroundWithTryWithResources() {
-			var partiePresente = false;
-			assertTrue(partiePresente || sectionPresente, """
-
-					Aller dans la classe `AllKindOfCode`
-
-					Prendre la méthode `surroundWithTryWithResources`
-
-					Décommenter le code, sélectionner les 2 premières lignes.
-					Ctrl+1 > Surround with try with resources
-
-					""");
-		}
-
-		@Order(20)
-		@DisplayName("Create Try with Resources")
-		@Test
-		void createTryWithResources() {
-			var partiePresente = false;
-			assertTrue(partiePresente || sectionPresente, """
-
-					Aller dans la classe `AllKindOfCode`
-
-					Prendre la méthode `createTryWithResources`
-
-					Ctrl+1 > Assign to new
-					""");
-		}
-
-		@Order(40)
-		@DisplayName("Plusieurs quifixes pour les sealed class")
+		@DisplayName("Sealed class : plusieurs quifixes")
 		@Test
 		void sealedClassQuicfixes() {
 			var partiePresente = false;
 			assertTrue(partiePresente || sectionPresente, """
-
-					Aller dans l'interface `Shape`
-
-					Décommenter > Ctrl+1 sur Triangle
-
-					Aller dans la classe Circle, décommenter >
-						- Ctrl + 1 sur Circle
-						- Ctrl + 1 sur Shape
+						- Aller dans l'interface `Shape`
+						- Décommenter > Ctrl+1 sur Triangle
+						- Aller dans la classe Circle, décommenter >
+							- Ctrl+1 sur Circle
+							- Ctrl+1 sur Shape
+					""");
+		}
+		
+		@Order(20)
+		@DisplayName("Static favorites")
+		@Test
+		void staticFavorites() {
+			var partiePresente = false;
+			assertTrue(partiePresente || sectionPresente, """
+						- Parler des favorites : Ctrl+3 > Favorites
+						- Montrer qu'il y en a plus qu'avant
+						- Montrer comment en ajouter ici 
+						- Aller dans `AllKindOfCode`
+						- Ctrl+1 sur `sqrt` : add static import
+						- Ctrl+1 sur `import static java.lang.Math.sqrt;`
+					""");
+		}
+		
+		@Order(30)
+		@DisplayName("Extract lambda body to method")
+		@Test
+		void extractLambdaBodyToMethod() {
+			var partiePresente = false;
+			assertTrue(partiePresente || sectionPresente, """
+						- Aller dans `AllKindOfCode`
+						- Ctrl+1 sur s.length()
+					""");
+		}
+		
+		@Order(40)
+		@DisplayName("Extend Interface")
+		@Test
+		void extendInterface() {
+			var partiePresente = false;
+			assertTrue(partiePresente || sectionPresente, """
+						- Aller dans `Shape`
+						- Ctrl+1 : extend interface
+						- Enchainer sur les autres quickfixes `Create sub type for sealed super type`
 					""");
 		}
 	}
 
-	@Order(70)
+	@Order(50)
 	@Nested
 	@TestMethodOrder(MethodOrderer.OrderAnnotation.class)
-	@DisplayName("71 nouveaux cleanups")
+	@DisplayName("20 nouveaux cleanups")
 	class CleanUps {
 
 		boolean sectionPresente = false;
@@ -285,23 +242,39 @@ public class Talk {
 		void afficherCleanup() {
 			var partiePresente = false;
 			assertTrue(partiePresente || sectionPresente, """
-					Ouvrir `AllKindOfBadCode`
-
-					Alt+Shift+S > U
-
-					Montrer la fenêtre de cleanup
-
-					Configurer un profil custom :
-						- Regexp compile
-						- Add elements in collections without loop
-						- Java Features
-						- valueOf
-						- Create array with curly when possible
-						- Use StringBuilder instead of StringBuffer clean up
+						- Ouvrir `AllKindOfBadCode`
+						- Alt+Shift+S > U
+						- Montrer la fenêtre de cleanup
+						- Utiliser le profile de démo
+						- Préciser qu'il faut pas tout mettre d'un coup
+						- Préciser qu'il est utile de passer plusieurs fois les clean-up
+						- Préciser que l'on peut mettre en save action
 					""");
 		}
 	}
 
+	@Order(60)
+	@Nested
+	@TestMethodOrder(MethodOrderer.OrderAnnotation.class)
+	@DisplayName("Junit")
+	class JUnit {
+		boolean sectionPresente = false;
+
+		@Order(10)
+		@DisplayName("")
+		@Test
+		void ameliorationDebug() {
+			var partiePresente = false;
+			assertTrue(partiePresente || sectionPresente, """
+						- Plusieurs ajouts fait dans les favorites
+						- Aller dans `ConversionResourceTest`
+						- Lancer les tests
+						- Re-run failed first
+						- 
+					""");
+		}
+	}
+	
 	@Order(80)
 	@Nested
 	@TestMethodOrder(MethodOrderer.OrderAnnotation.class)
@@ -316,30 +289,50 @@ public class Talk {
 		void ameliorationDebug() {
 			var partiePresente = false;
 			assertTrue(partiePresente || sectionPresente, """
-						Aller dans la classe `ConversionService`
-
-						Placer un point d'arrêt sur la méthode `getAvailableConversion`
-
-						Lancer l'application (Main.java) en mode debug
-
+						- Aller dans la classe `ConversionService`
+						- Placer un point d'arrêt au début de `convert`
+						- Appeler l'url http://localhost:8080/convert/10/METRE/YARD
+						
 						Montrer :
-						- inspecter les données des variables dans la pile d'appel (cf. ConversionResource)
-						- inspecter les éléments dans la chaîne d'appel (cf. contenu predicate)
-						- inspecter le predicate
-						- mettre en place un tracepoint (évite de polluer votre code)
-						- Helpful NPE (cf. debug configuration)
+						- inspecter les éléments dans la chaîne d'appel (cf. paramètre du passés au controller)
+						- mettre en place un tracepoint dans le main Quarkus
+						- le label sur les objets de debug
+						- le fait que le label est repris dans les autres objets (exemple `ConversionResult`)
+						- sur ConversionUnit dans vue `Variables` montrer que l'on peut aller directement à la déclaration d'un champ de l'enum
 					""");
 		}
 
 		@Order(20)
-		@DisplayName("Vue variables")
+		@DisplayName("Process ID")
+		@Test
+		void processID() {
+			var partiePresente = false;
+			assertTrue(partiePresente || sectionPresente, """
+						- Click droit sur le process dans la vue Debug
+						- Voir les properties
+						- Montrer le PID
+					""");
+		}
+		
+		@Order(30)
+		@DisplayName("Lambda Entry Point")
 		@Test
 		void vueVariables() {
 			var partiePresente = false;
 			assertTrue(partiePresente || sectionPresente, """
-						- Actual type in variable view
-							=> enlever les colonnes
-							=> activer `Show type names`
+						- Mettre un point d'arrêt sur la lambda dans ConversionService#filterAvailableConversions
+						- Accéder à l'url http://localhost:8080/conversions?conversionUnit=METRE
+						- Le debug s'arrête sur la lambda
+					""");
+		}
+
+		@Order(40)
+		@DisplayName("Debug Launch Configuration")
+		@Test
+		void debugLaunchConfiguration() {
+			var partiePresente = false;
+			assertTrue(partiePresente || sectionPresente, """
+						- Paramètre pour utiliser directement l'encoding du système
 					""");
 		}
 
@@ -354,47 +347,14 @@ public class Talk {
 		boolean sectionPresente = false;
 
 		@Order(10)
-		@DisplayName("Prérequis : lancer l'appli via Eclipse IDE")
+		@DisplayName("Support for ANSI escape codes in Console")
 		@Test
-		void prerequis() {
-			var partiePresente = false;
-			assertTrue(partiePresente || sectionPresente, """
-					Prérequis : lancer l'application via Eclipse IDE > Main.java
-					""");
-		}
-
-		@Order(20)
-		@DisplayName("Synchro word wrap dans les préférences")
-		@Test
-		void preferencePourWordWrapParDefaut() {
-			var partiePresente = false;
-			assertTrue(partiePresente || sectionPresente, """
-					Ctrl + 3 > Console > Enable word wrap.
-
-					Synchro avec ce qui est présent au clic droit dans la console.
-					""");
-		}
-
-		@Order(30)
-		@DisplayName("Heure de fin du process")
-		@Test
-		void heureArretProcess() {
-			var partiePresente = false;
-			assertTrue(partiePresente || sectionPresente, """
-					Lors de l'arrêt du process, l'heure est affichée.
-					""");
-		}
-
-		@Order(40)
-		@DisplayName("Ctrl + K, Ctrl + Shift + K")
-		@Test
-		void rechercheOccurencePrecedenteOuSuivante() {
+		void ansiCharacters() {
 			var partiePresente = false || sectionPresente;
 			assertTrue(partiePresente, """
-					Une fois une recherche effectuée dans la console, on peut utiliser :
-
-					* ctrl+K : prochaine occurence
-					* ctrl+shift+k : occurence prédédente
+						- Lancer l'application Quarkus
+						- Montrer la coloration 
+						- Montrer la préférence avec le choix des couleurs
 					""");
 		}
 
@@ -414,10 +374,8 @@ public class Talk {
 		void rechercheOccurencePrecedenteOuSuivante() {
 			var partiePresente = false || sectionPresente;
 			assertTrue(partiePresente, """
-					Une fois une recherche effectuée dans la console, on peut utiliser :
-
-					* ctrl+K : prochaine occurence
-					* ctrl+shift+k : occurence prédédente
+						- Retour au slide, montrer les quelques rares améliorations
+						- C'est pas mieux sous Linux ???
 					""");
 		}
 

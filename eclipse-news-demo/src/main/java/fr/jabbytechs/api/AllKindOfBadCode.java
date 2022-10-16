@@ -6,8 +6,8 @@ import java.util.List;
 
 public class AllKindOfBadCode {
 
-	public static String dateCheck= "\\d{4}-\\d{2}-\\d{2}";
-	
+	public static String dateCheck = "\\d{4}-\\d{2}-\\d{2}";
+
 	public static void main(String[] args) {
 
 		// Regexp compile
@@ -17,51 +17,53 @@ public class AllKindOfBadCode {
 		"A2020-03-17B".split(dateCheck);
 
 		// Add elements in collections without loop
-		List<String> inputList = Arrays.asList("Hello", "Devoxx");
-		List<String> outputList  = new ArrayList<>();
-		
+		List<String> inputList = Arrays.asList("Hello", "Tours JUG");
+		List<String> outputList = new ArrayList<>();
+
 		for (int i = 0; i < inputList.size(); i++) {
-		    outputList.add(inputList.get(i));
+			outputList.add(inputList.get(i));
 		}
-		
 
 		// Java Features
 		Object object = 1;
 		int j = 0;
 		if (object instanceof Integer) {
-		    Integer i = (Integer) object;
-		    j = i.intValue();
+			Integer i = (Integer) object;
+			j = i.intValue();
 		}
 
 		int i;
-		switch(j) {
-		    case 1:
-		        i = 3;
-		        break;
-		    case 2:
-		        i = 4;
-		        break;
-		    default:
-		        i = 0;
-		        break;
+		switch (j) {
+		case 1:
+			i = 3;
+			break;
+		case 2:
+			i = 4;
+			break;
+		default:
+			i = 0;
+			break;
 		}
-		
+
 		// valueOf
 		Object characterObject = Character.valueOf('a');
 		new Byte("0").byteValue();
 		long l = new Long(42);
-		
+
 		// Create array with curly when possible
 		double[] doubleArray = new double[] { 42.42 };
 
-		
 	}
-	
+
 	// Use StringBuilder instead of StringBuffer clean up
 	public void foo(StringBuffer x) {
 		StringBuffer y = new StringBuffer();
-	    y.append("a string");
-	    System.out.println(y.toString());
+		y.append("a string");
+		System.out.println(y.toString());
+	}
+
+	public void stringConcat() {
+		String hello = "Hello \n" + "Tours JUG \n\n" + "Comment allez-vous ?";
 	}
 
 }

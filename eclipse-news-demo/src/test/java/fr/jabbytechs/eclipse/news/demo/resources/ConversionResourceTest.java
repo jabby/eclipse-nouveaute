@@ -7,8 +7,17 @@ import org.junit.jupiter.api.Test;
 class ConversionResourceTest {
 
 	@Test
-	void test() {
+	void testOk1() {
+		assertTrue(true);
+	}
+	
+	@Test
+	void testKo() {
 		fail("Not yet implemented");
 	}
 
+	@Test
+	void testOk2() {
+		assertTrue(true);
+	}
 }

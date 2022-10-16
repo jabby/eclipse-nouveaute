@@ -48,6 +48,8 @@ import fr.jabbytechs.eclipse.news.demo.model.ConversionUnit;
 public class ConversionService implements Service {
 
 	private static final List<Conversion> conversions = new ArrayList<>();
+	
+	private final String debugMessage = "Hello le JUG de Tours";
 
 	public List<Conversion> getAvailableConversion(ConversionUnit conversionUnit) {
 
@@ -61,14 +63,10 @@ public class ConversionService implements Service {
 		// FIXME ajouter un tracepoint
 		System.out.println("Filter is : " + conversionUnit.name());	
 		
-		
-		// Code inutile sauf pour vous montrer la vue variable
-		Object variable = conversionUnit.unit;
-		
-		Predicate<Conversion> predicate = (Conversion conversion) -> {
-			return conversion.getOrigin() == conversionUnit || conversion.target.unit == conversionUnit.unit;
-		};
-		return conversions.stream().filter(predicate).collect(Collectors.toList());
+		return conversions
+				.stream()
+				.filter(conversion -> conversion.getOrigin() == conversionUnit || conversion.target.unit == conversionUnit.unit)
+				.collect(Collectors.toList());
 	}
 
 	public List<Conversion> getAllAvailableConversion() {
@@ -87,7 +85,8 @@ public class ConversionService implements Service {
 		}
 
 		if (currentConversion != null) {
-			return new ConversionResult(origin, target, value, value.multiply(currentConversion.getRelationToTarget()));
+			ConversionResult conversionResult = new ConversionResult(origin, target, value, value.multiply(currentConversion.getRelationToTarget()));
+			return conversionResult;
 		}
 
 		return new ConversionResult(origin, target, value, value);
